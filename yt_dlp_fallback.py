@@ -75,7 +75,7 @@ async def download_with_pytube(url: str, fmt: str, quality: str) -> str:
 def get_format_string(fmt: str, quality: str) -> str:
     try:
         qmap = {"4k": 2160, "8k": 4320}
-        height = qmap.get(quality.lower(), int(quality.lower().replace("p", "")))
+        height = qmap.get(quality.lower(), int(quality.lower().replace("p", "").replace("k", "")))
     except ValueError:
         height = 720
     if fmt == "mp3":
